@@ -1,0 +1,236 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full Page Background */
+.full-page {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../static/pic.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+/* Logo Adjustments */
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: palevioletred;  /* Changed to palevioletred */
+    margin-left: 30px;
+}
+
+/* Navigation Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-right: 30px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 24px;  /* Increased font size */
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #F3C693;
+}
+a
+{
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 28px;
+}
+
+/* Upload Section */
+.upload-section, .logout-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    margin: 180px auto;
+}
+
+/* Upload Buttons */
+.upload-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.upload-options button {
+    padding: 14px 26px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;  /* Increased font size */
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Form Styling */
+.upload-details input, .upload-details textarea, .upload-url input {
+    width: 50%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Submit Button */
+.submit-container button {
+    background-color: #28a745;
+    color: white;
+    padding: 14px 26px;
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 40%;
+    margin: auto;
+}
+
+#logout-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.logout-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logout-buttons .cancel-btn,
+.logout-buttons .exit-btn {
+    padding: 14px 26px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-buttons .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.logout-buttons .cancel-btn:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
+
+.logout-buttons .exit-btn {
+    background-color: #d9534f;
+    color: white;
+}
+
+.logout-buttons .exit-btn:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* Add to your existing style2.css */
+.result-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.result-content {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.risk-level {
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+.risk-level.high {
+    color: #e74c3c;
+}
+
+.risk-level.moderate {
+    color: #f39c12;
+}
+
+.probability {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}

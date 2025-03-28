@@ -1,0 +1,253 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.full-page
+{
+    height: 100%;
+	width: 100%;
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("../static/pic.jpg");
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+.full-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10;
+    width: 100%;
+    height: 100%;
+    background: url("final/front/image/project.jpg") center/cover no-repeat;
+    filter: blur(8px); /* Adjust blur effect */
+    z-index: -1;
+}
+
+
+nav
+{
+    flex: 1;
+    text-align: right;
+}
+nav ul 
+{
+    list-style: none;
+    margin-right: 30px;
+}
+nav ul li
+{
+    display: inline-block;
+    margin-right: 15px;
+}
+nav ul li a
+{
+    text-decoration: none;
+    position: 800px;
+    font-size: 20px;
+    color: white;
+    font-family: sans-serif;
+}
+nav ul li button
+{
+    font-size: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background:rgba(255, 255, 255, 0.8);;
+}
+/* Move logo slightly to the right */
+.navbar div {
+    margin-left: 50px; /* Adjust this value as needed */
+}
+
+/* Adjust "Home" and "Login" slightly to the left */
+nav ul {
+    list-style: none;
+    margin-right: auto; /* Push menu to the left */
+    padding-left: 1000px; /* Slight left shift for menu items */
+    display: flex;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 60px; /* Adjust spacing between menu items */
+}
+
+nav ul li a, .loginbtn {
+    text-decoration: none;
+    color:palevioletred;
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, .loginbtn:hover {
+    color: #F3C693;
+}
+
+
+
+
+
+a
+{
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 28px;
+}
+.home-section {
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    padding: 50px 20px; /* Adjust padding */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    color: #333;
+    margin: 170px auto 50px auto; /* moves down and slightly to the left*/; 
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 50%; /* Box width */
+    height: auto; /* Adjust height dynamically */
+}
+
+
+
+.home-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #3b10d6; /* Matching the navbar's accent color */
+}
+
+.home-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    line-height: 1.8;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+#login-form
+{
+    display: none;
+}
+.form-box
+{
+    width:380px;
+	height:480px;
+	position:relative;
+	margin:5% auto;
+	background:rgba(255, 255, 255, 0.8);
+	padding:10px;
+    overflow: hidden;
+}
+.button-box
+{
+	width:220px;
+	margin:35px auto;
+	position:relative;
+	box-shadow: 0 0 20px 9px #ff61241f;
+	border-radius: 30px;
+}
+.toggle-btn
+{
+	padding:10px 30px;
+	cursor:pointer;
+	background:transparent;
+	border:0;
+	outline: none;
+	position: relative;
+}
+#btn
+{
+	top: 0;
+	left:0;
+	position: absolute;
+	width: 110px;
+	height: 100%;
+	background:  #591cdc;
+	border-radius: 30px;
+	transition: .5s;
+}
+.input-group-login
+{
+	top: 150px;
+	position:absolute;
+	width:280px;
+	transition:.5s;
+}
+.input-group-register
+{
+    top: 120px;
+	position:absolute;
+	width:280px;
+	transition:.5s;
+}
+.input-field
+{
+	width: 100%;
+	padding:10px 0;
+	margin:5px 0;
+	border-left:0;
+	border-top:0;
+	border-right:0;
+	border-bottom: 1px solid #999;
+	outline:none;
+	background: transparent;
+}
+.submit-btn
+{
+	width: 85%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: #591cdc;
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+}
+.check-box
+{
+	margin: 30px 10px 34px 0;
+}
+span
+{
+	color:#777;
+	font-size:12px;
+	bottom:68px;
+	position:absolute;
+}
+#login
+{
+	left:50px;
+}
+#login input
+{
+	color:rgb(21, 18, 18);
+	font-size:15;
+}
+#register
+{
+	left:450px;
+}
+#register input
+{
+	color:rgb(20, 19, 19);
+	font-size: 15;
+}
