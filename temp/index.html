@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtuHire</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="full-page">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div>
+                <a href="website.html">VirtuHire</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#" onclick="showHome()">Home</a></li>
+                    <li><button class="loginbtn" onclick="showLogin()">Login</button></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Home Section -->
+        <div id="home" class="home-section">
+            <h1>Welcome to VirtuHire</h1>
+            <p>
+                Searching for a job? Worried about scams? VirtuHire helps you verify job postings
+                based on the details you provide. Simply enter job information, 
+                and our system will predict whether the job is real or fake.
+            </p>
+        </div>
+
+        <!-- Login/Register Section -->
+        <div id="login-form" class="login-page" style="display: none;">
+            <div class="form-box">
+                <!-- Toggle Buttons -->
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" onclick="login()" class="toggle-btn">Log In</button>
+                    <button type="button" onclick="register()" class="toggle-btn">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login" class="input-group-login" onsubmit="handleLogin(event)">
+                    <input type="text" class="input-field" name="email" placeholder="Email Id" required>
+                    <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box" name="rememberMe">
+                    <span>Remember Password</span>
+                    <button type="submit" class="submit-btn">Log in</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register" class="input-group-register" onsubmit="handleRegister(event)" style="left: 450px;">
+                    <input type="text" class="input-field" name="firstName" placeholder="First Name" required>
+                    <input type="text" class="input-field" name="lastName" placeholder="Last Name" required>
+                    <input type="email" class="input-field" name="email" placeholder="Email Id" required>
+                    <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+                    <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm Password" required>
+                    <input type="checkbox" class="check-box" required>
+                    <span>I agree to the terms and conditions</span>
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Section References
+        const homeSection = document.getElementById('home');
+        const loginForm = document.getElementById('login-form');
+        const loginSection = document.getElementById('login');
+        const registerSection = document.getElementById('register');
+        const toggleBtn = document.getElementById('btn');
+
+        // Show Home Section
+        function showHome() {
+            homeSection.style.display = 'block';
+            loginForm.style.display = 'none';
+        }
+
+        // Show Login/Register Form
+        function showLogin() {
+            homeSection.style.display = 'none';
+            loginForm.style.display = 'block';
+        }
+
+        // Switch to Register Form
+        function register() {
+            loginSection.style.left = '-400px';
+            registerSection.style.left = '50px';
+            toggleBtn.style.left = '110px';
+        }
+
+        // Switch to Login Form
+        function login() {
+            loginSection.style.left = '50px';
+            registerSection.style.left = '450px';
+            toggleBtn.style.left = '0px';
+        }
+
+        // Handle Login Submission
+        async function handleLogin(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+                rememberMe: formData.get('rememberMe') === 'on',
+            };
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('token', result.token);
+                    window.location.href = '/templates/index1.html'; // Redirect on success
+                } else {
+                    alert(result.message || 'Login failed. Please try again.');
+                    if (result.message === 'User not found') register(); // Switch to registration form
+                }
+            } catch (error) {
+                alert('Error during login. Please try again.');
+            }
+        }
+
+        // Handle Register Submission
+        async function handleRegister(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirmpassword: formData.get('confirmpassword'),
+            };
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Registration successful! Please login.');
+                    login(); // Switch to login form
+                } else {
+                    alert(result.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                alert('Error during registration. Please try again.');
+            }
+        }
+
+        // Default Section Display
+        showHome();
+    </script>
+</body>
+</html>

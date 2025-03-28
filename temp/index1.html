@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtuHire</title>
+    <link rel="stylesheet" href="../static/style2.css">
+</head>
+<body>
+
+    <div class="full-page">
+        <div class="navbar">
+            <div class="logo">
+                <a href="website.html">VirtuHire</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#" onclick="showUpload()">Upload</a></li>
+                    <li><a href="#" class="logoutbtn" onclick="showLogout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Upload Section -->
+        <div id="upload-section" class="upload-section" style="display: none;">
+            <h2>Upload Job</h2>
+            <div class="upload-options">
+                <button onclick="showUploadDetails()">Upload Details</button>
+                <button onclick="showUploadUrl()">Upload URL</button>
+            </div>
+            <div id="upload-details" class="upload-details" style="display: none;">
+                <h3>Enter Job Details</h3>
+                <form action="/predict" method="POST">
+                    <input type="text" name="title" placeholder="Job Title" required>
+                    <input type="text" name="company_profile" placeholder="Company Name" required>
+                    <textarea name="description" placeholder="Job Description" required></textarea>
+                    <textarea name="requirements" placeholder="Job Requirements" required></textarea>
+                    <textarea name="benefits" placeholder="Benefits" required></textarea>
+                    <input type="text" name="salary" placeholder="Salary" required>
+                    <input type="text" name="location" placeholder="Location" required>
+                    <div class="submit-container">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div id="upload-url" class="upload-url" style="display: none;">
+                <h3>Enter Job URL</h3>
+                <form action="/predict-url" method="POST">
+                    <input type="url" name="job_url" placeholder="Job Posting URL" required>
+                    <div class="submit-container">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Logout Section -->
+        <div id="logout-section" style="display: none;">
+            <h2>Are you sure you want to logout?</h2>
+            <div class="logout-buttons">
+                <button class="cancel-btn" onclick="cancelLogout()">Cancel</button>
+                <button class="exit-btn" onclick="confirmLogout()">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure sections are hidden initially
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('upload-section').style.display = 'none';
+            document.getElementById('logout-section').style.display = 'none';
+            document.getElementById('upload-details').style.display = 'none';
+            document.getElementById('upload-url').style.display = 'none';
+        });
+
+        // Show Upload Section
+        function showUpload() {
+            document.getElementById('upload-section').style.display = 'block';
+            document.getElementById('logout-section').style.display = 'none';
+            hideUploadSections();
+        }
+
+        // Show Logout Section
+        function showLogout() {
+            document.getElementById('upload-section').style.display = 'none';
+            document.getElementById('logout-section').style.display = 'block';
+        }
+
+        // Show Upload Details Form
+        function showUploadDetails() {
+            document.getElementById('upload-details').style.display = 'block';
+            document.getElementById('upload-url').style.display = 'none';
+        }
+
+        // Show Upload URL Form
+        function showUploadUrl() {
+            document.getElementById('upload-url').style.display = 'block';
+            document.getElementById('upload-details').style.display = 'none';
+        }
+
+        // Cancel Logout
+        function cancelLogout() {
+            document.getElementById('logout-section').style.display = 'none';
+            showUpload();
+        }
+
+        // Confirm Logout
+        function confirmLogout() {
+            // Clear session storage (if used)
+            sessionStorage.clear();
+
+            // Clear local storage (if used)
+            localStorage.clear();
+
+            // Redirect to index.html
+            window.location.href = 'index.html';
+        }
+
+        // Hide Upload Sections
+        function hideUploadSections() {
+            document.getElementById('upload-details').style.display = 'none';
+            document.getElementById('upload-url').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

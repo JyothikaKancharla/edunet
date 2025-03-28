@@ -1,0 +1,30 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Analysis Result - VirtuHire</title>
+    <link rel="stylesheet" href="../static/style2.css">
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div class="logo">
+                <a href='/'>VirtuHire</a>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <h2>Job Analysis Result</h2>
+            <div class="result-content">
+                <p>Risk Level: <span class="risk-level">{{ risk_level }}</span></p>
+                <p>Confidence: <span class="probability">{{ probability }}</span></p>
+            </div>
+            <div class="button-container">
+                <a href="/" class="back-button">Back to Upload</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

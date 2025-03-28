@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtuHire</title>
+    <link rel="stylesheet" href="static/style2.css">
+</head>
+<body>
+    <!-- Previous HTML content remains the same -->
+    <div class="full-page">
+        <!-- ... rest of your HTML ... -->
+    </div>
+    <script src="script.js"></script>
+
+
+    <div class="full-page">
+        <div class="navbar">
+            <div class="logo">
+                <a href='website.html'>VirtuHire</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href="#" onclick="showUpload()">Upload</a></li>
+                    <li><a href="#" class="logoutbtn" onclick="showLogout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Upload Section -->
+        <div id="upload" class="upload-section">
+            <h2>Upload Job</h2>
+            <div class="upload-options">
+                <button onclick="showUploadDetails()">Upload Details</button>
+                <button onclick="showUploadUrl()">Upload URL</button>
+            </div>
+            <div id="upload-details" class="upload-details">
+                <h3>Enter Job Details</h3>
+                <input type="text" placeholder="Job Title" required>
+                <input type="text" placeholder="Company Name" required>
+                <textarea placeholder="Job Description" required></textarea>
+                <input type="text" placeholder="Salary" required>
+                <input type="text" placeholder="Location" required>
+                <div class="submit-container">
+                    <button>Submit</button>
+                </div>
+            </div>
+            <div id="upload-url" class="upload-url">
+                <h3>Enter Job URL</h3>
+                <input type="url" placeholder="Job Posting URL" required>
+                <div class="submit-container">
+                    <button>Submit</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logout Section -->
+        <div id="logout" class="logout-section">
+            <h2>Are you sure you want to logout?</h2>
+            <div class="logout-buttons">
+                <button class="cancel-logout" onclick="cancelLogout()">Cancel</button>
+                <button class="confirm-logout" onclick="confirmLogout()">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('upload').style.display = 'none';
+            document.getElementById('logout').style.display = 'none';
+            document.getElementById('upload-details').style.display = 'none';
+            document.getElementById('upload-url').style.display = 'none';
+        });
+        
+        function showUpload() {
+            document.getElementById('upload').style.display = 'block';
+            document.getElementById('logout').style.display = 'none';
+            hideUploadSections();
+        }
+        
+        function showLogout() {
+            document.getElementById('upload').style.display = 'none';
+            document.getElementById('logout').style.display = 'block';
+        }
+        
+        function showUploadDetails() {
+            document.getElementById('upload-details').style.display = 'block';
+            document.getElementById('upload-url').style.display = 'none';
+        }
+        
+        function showUploadUrl() {
+            document.getElementById('upload-url').style.display = 'block';
+            document.getElementById('upload-details').style.display = 'none';
+        }
+        
+        function cancelLogout() {
+            document.getElementById('logout').style.display = 'none';
+            showUpload();
+        }
+        
+        function confirmLogout() {
+            document.getElementById('logout').innerHTML = '<h2>Thank you for using VirtuHire!</h2>';
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000);
+        }
+        
+        function hideUploadSections() {
+            document.getElementById('upload-details').style.display = 'none';
+            document.getElementById('upload-url').style.display = 'none';
+        }
+        
+    </script>
+</body>
+</html>
